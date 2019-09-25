@@ -1,8 +1,8 @@
-# job-board
+# team-maker求人票
 
-> job-board for Employee, Applicant
+team-maker求人票のフロントエンド
 
-## Build Setup
+## ビルド手順
 
 ``` bash
 # install dependencies
