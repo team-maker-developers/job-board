@@ -4,6 +4,7 @@
       <div class="text-center">
         <logo />
         <vuetify-logo />
+        <Card />
       </div>
       <v-card>
         <v-card-title class="headline">
@@ -65,11 +66,13 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import Card from '~/components/Card.vue'
 
 export default {
   components: {
     Logo,
-    VuetifyLogo
+    VuetifyLogo,
+    Card
   }
 }
 </script>
