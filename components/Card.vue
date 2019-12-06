@@ -65,7 +65,7 @@ export default {
     outlined: false,
     elevation: undefined,
     raised: false,
-    width: 344,
+    width: 1200,
     height: undefined
   })
 }
