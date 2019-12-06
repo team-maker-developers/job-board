@@ -1,5 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
+import { getConfig } from './configs/get-config'
 
+const environment = process.env.NODE_ENV || 'development'
+const envValues = getConfig(environment)
 export default {
   mode: 'universal',
   /*
@@ -81,6 +84,12 @@ export default {
         }
       }
     }
+  },
+
+  env: envValues,
+
+  dir: {
+    pages: envValues.isMock ? 'mock' : 'pages'
   },
   /*
    ** Build configuration
