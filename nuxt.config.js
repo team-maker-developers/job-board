@@ -1,7 +1,10 @@
 import colors from 'vuetify/es5/util/colors'
+import { getConfig } from './configs/get-config'
 
+const environment = process.env.NODE_ENV || 'development'
+const envValues = getConfig(environment)
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -68,7 +71,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -81,6 +84,12 @@ export default {
         }
       }
     }
+  },
+
+  env: envValues,
+
+  dir: {
+    pages: envValues.isMock ? 'mock' : 'pages'
   },
   /*
    ** Build configuration
