@@ -2,7 +2,7 @@
 
 team-maker求人票のフロントエンド
 
-## デプロイ
+## デプロイ（モック）
 ### ステータス
 - [![Netlify Status](https://api.netlify.com/api/v1/badges/d8521463-015e-4741-87e4-8089404d3f1c/deploy-status)](https://app.netlify.com/sites/brave-golick-7ab823/deploys)
 
