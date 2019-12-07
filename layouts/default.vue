@@ -18,7 +18,7 @@
 export default {
   data() {
     return {
-      title: '求人表'
+      title: '株式会社●●●●'
     }
   }
 }
