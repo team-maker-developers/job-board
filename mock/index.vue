@@ -9,9 +9,12 @@
                 <v-chip color="primary mx-1">中途採用（正社員）</v-chip>
               </div>
             </v-card-text>
-            <v-card-title class="mb-4 font-weight-black">
+            <v-card-title class="mb-0 font-weight-black">
               港区で働く訪問看護師
             </v-card-title>
+            <v-card-text class="caption">
+              BCC訪問看護ステーション
+            </v-card-text>
             <v-card-title class="blue-grey lighten-5">
               仕事内容
             </v-card-title>
