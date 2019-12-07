@@ -8,9 +8,6 @@
         <nuxt />
       </v-container>
     </v-content>
-    <v-footer app>
-      <span>&copy; 2019</span>
-    </v-footer>
   </v-app>
 </template>
 
@@ -18,7 +15,7 @@
 export default {
   data() {
     return {
-      title: '株式会社●●●●'
+      title: '港区で働く訪問看護師'
     }
   }
 }
