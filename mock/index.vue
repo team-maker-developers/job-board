@@ -7,7 +7,6 @@
             <v-card-text class="pb-1">
               <div class="d-flex flex-row">
                 <v-chip color="primary mx-1">中途採用（正社員）</v-chip>
-                <v-chip class="mx-1">看護師 / LCC訪問看護ステーション</v-chip>
               </div>
             </v-card-text>
             <v-card-title class="mb-4">
