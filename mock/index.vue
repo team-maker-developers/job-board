@@ -4,8 +4,23 @@
       <v-row dense>
         <v-col cols="12">
           <v-card>
-            <v-card-title class="headline">仕事内容</v-card-title>
-            <v-card-text>
+            <v-card-text class="pb-1">
+              <div class="d-flex flex-row">
+                <v-chip color="primary mx-1">中途採用（正社員）</v-chip>
+                <v-chip class="mx-1">看護師 / LCC訪問看護ステーション</v-chip>
+              </div>
+            </v-card-text>
+            <v-card-title>
+              <h1 class="display-1 font-weight-black">
+                港区・渋谷区で働く訪問看護師
+              </h1>
+            </v-card-title>
+          </v-card>
+          <v-card>
+            <v-card-title>
+              <h2 class="headline">仕事内容</h2>
+            </v-card-title>
+            <v-card-text class="font-regular">
               ご利用者様の自宅に訪問し、訪問看護業務を行っていただきます。保険内、保険外のサービスを組み合わせて、ご利用者様の満足度の高いケアを提供します。できるかどうか不安な方もまずはお気軽にご相談ください。（フリーダイヤル：0120-972-884）<br />
               <br />
               ＜保険内＞<br />
