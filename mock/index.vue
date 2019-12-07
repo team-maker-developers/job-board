@@ -105,6 +105,9 @@
                 ◇ 雇用保険<br />
               </p>
             </v-card-text>
+            <div class="d-flex justify-center pb-5">
+              <v-btn x-large color="amber darken-4" dark>求人に応募する</v-btn>
+            </div>
           </v-card>
         </v-col>
       </v-row>
