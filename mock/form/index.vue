@@ -70,12 +70,31 @@
                   <v-btn
                     x-large
                     color="amber darken-4"
-                    block="true"
+                    block
                     dark
-                    @click="validate"
+                    @click.stop="validate"
                     >応募する</v-btn
                   >
                 </div>
+                <v-dialog v-model="dialog" max-width="500">
+                  <v-card>
+                    <v-card-title class="headline"
+                      >求人に応募しました</v-card-title
+                    >
+
+                    <v-card-text>
+                      3営業日中に返信いたします。<br />
+                      誠に恐縮ですが、少々お待ち下さい。
+                    </v-card-text>
+
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="primary" @click="dialog = false">
+                        OK
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
               </v-form>
             </v-card-text>
           </v-card>
@@ -96,12 +115,14 @@ export default {
       (v) => !!v || 'メールアドレスを入力してください',
       (v) => /.+@.+\..+/.test(v) || '有効なメールアドレスを入力してください'
     ],
-    checkbox: false
+    checkbox: false,
+    dialog: false
   }),
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
         this.snackbar = true
+        this.dialog = true
       }
     }
   }
