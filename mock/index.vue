@@ -117,7 +117,9 @@
       <v-card flat tile width="100%" class="blue-grey lighten-5">
         <v-card-text>
           <div class="d-flex justify-center pb-5">
-            <v-btn x-large color="amber darken-4" dark>応募する</v-btn>
+            <v-btn x-large color="amber darken-4" dark to="form"
+              >応募する</v-btn
+            >
           </div>
         </v-card-text>
       </v-card>
