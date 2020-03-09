@@ -18,7 +18,9 @@
               業界、業種、職種
             </v-card-title>
             <v-card-text>
-              <p class="my-2">{{ industry }}、{{ occupation }}</p>
+              <p class="my-2">
+                <industry :industries="data.industry"></industry>
+              </p>
             </v-card-text>
             <v-card-title class="blue-grey lighten-5">
               仕事内容
@@ -32,16 +34,14 @@
               勤務地
             </v-card-title>
             <v-card-text>
-              <p class="my-2">
-                {{ place }}
-              </p>
+              <p class="my-2"><place :place="data.place" /></p>
             </v-card-text>
             <v-card-title class="blue-grey lighten-5">
               勤務時間
             </v-card-title>
             <v-card-text>
               <p class="my-2">
-                {{ workStartAt | convertTime }}〜{{ workEndAt | convertTime }}
+                <work-date-time :work-datetime="data.work_datetime" />
               </p>
             </v-card-text>
             <v-card-title class="blue-grey lighten-5">
@@ -54,7 +54,9 @@
               契約期間
             </v-card-title>
             <v-card-text>
-              <p class="my-2">{{ contractPeriod | convertDate }}まで</p>
+              <p class="my-2">
+                <contract-period :contract-period="data.contract_period" />
+              </p>
             </v-card-text>
             <v-card-title class="blue-grey lighten-5">
               福利厚生
@@ -85,7 +87,17 @@
   </v-layout>
 </template>
 <script>
+import WorkDateTime from '~/components/jobpostings/JobPostingWorkDateTime.vue'
+import ContractPeriod from '~/components/jobpostings/JobPostingContractPeriod.vue'
+import Place from '~/components/jobpostings/JobPostingPlace.vue'
+import Industry from '~/components/jobpostings/JobPostingIndustry.vue'
 export default {
+  components: {
+    WorkDateTime,
+    ContractPeriod,
+    Industry,
+    Place
+  },
   props: {
     data: {
       type: Object,
@@ -97,31 +109,19 @@ export default {
     return {
       title: '',
       category: '',
-      industry: '',
-      occupation: '',
       content: '',
-      workStartAt: '',
-      workEndAt: '',
       salary: '',
       welfare: '',
-      place: '',
-      jobContent: '',
-      contractPeriod: ''
+      jobContent: ''
     }
   },
   mounted() {
     this.title = this.data.name
     this.category = this.data.employment_category.name || ''
     this.jobContent = this.data.job_content || ''
-    this.industry = this.data.industry.industry || ''
-    this.occupation = this.data.industry.occupation || ''
     this.content = this.data.job_content || ''
-    this.workStartAt = this.data.work_datetime.start_at.date
-    this.workEndAt = this.data.work_datetime.end_at.date
-    this.contractPeriod = this.data.contract_period.finished_at
     this.salary = this.data.salary.hourly || ''
     this.welfare = this.data.welfare || ''
-    this.place = this.data.place.address
   }
 }
 </script>

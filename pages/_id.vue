@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import JobPosting from '~/components/JobPosting.vue'
+import JobPosting from '~/components/jobpostings/JobPostingList.vue'
 
 export default {
   layout: 'default',
@@ -17,7 +17,9 @@ export default {
   },
   async asyncData({ $axios, env, params, store, error }) {
     try {
-      const data = await $axios.$get(`/api/jobs/${params.id}`)
+      const data = await $axios.$get(
+        `https://jsondata.okiba.me/v1/json/1ERa7200309124631`
+      )
       const records = data.content.pageable_content.record
       store.commit('headers/setCompanyNameState', data.company.name)
       return {
