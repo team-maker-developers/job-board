@@ -2,8 +2,7 @@
   <v-app dark>
     <v-app-bar app>
       <v-toolbar-title>
-        <p class="pa-0 ma-0">港区で働く訪問看護師</p>
-        <p class="pa-0 ma-0 caption">BCC訪問看護ステーション</p>
+        <p class="pa-0 ma-0 caption">{{ companyName }}</p>
       </v-toolbar-title>
     </v-app-bar>
     <v-content>
@@ -15,9 +14,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  data() {
-    return {}
+  computed: {
+    ...mapGetters({ companyName: 'headers/getCompanyName' })
   }
 }
 </script>
