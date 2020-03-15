@@ -20,31 +20,11 @@
             <v-card-text>
               <v-form ref="form" v-model="valid" lazy-validation>
                 <v-row>
-                  <v-col cols="6">
+                  <v-col cols="12">
                     <v-text-field
-                      v-model="nameSeiKanji"
-                      :rules="nameSeiKanjiRules"
-                      label="姓"
-                      required
-                    ></v-text-field>
-                    <v-text-field
-                      v-model="nameSeiKana"
-                      :rules="nameSeiKanaRules"
-                      label="セイ"
-                      required
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="6">
-                    <v-text-field
-                      v-model="nameMeiKanji"
-                      :rules="nameMeiKanjiRules"
-                      label="名"
-                      required
-                    ></v-text-field>
-                    <v-text-field
-                      v-model="nameMeiKana"
-                      :rules="nameMeiKanaRules"
-                      label="メイ"
+                      v-model="name"
+                      :rules="nameRules"
+                      label="お名前"
                       required
                     ></v-text-field>
                   </v-col>
@@ -99,6 +79,7 @@
         </v-col>
       </v-row>
     </v-container>
+    <a @click="backJobPosting">求人情報に戻る</a>
   </v-layout>
 </template>
 
@@ -123,23 +104,10 @@ export default {
     dialogText: '',
     title: '',
     category: '',
-    nameSeiKanji: '',
-    nameMeiKanji: '',
-    nameSeiKana: '',
-    nameMeiKana: '',
     valid: true,
     name: '',
     email: '',
-    nameSeiKanjiRules: [(v) => !!v || '姓を入力してください'],
-    nameMeiKanjiRules: [(v) => !!v || '名を入力してください'],
-    nameSeiKanaRules: [
-      (v) => !!v || '姓を入力してください',
-      (v) => /^([ァ-ン]|ー)+$/.test(v) || '全角カタカナで入力してください'
-    ],
-    nameMeiKanaRules: [
-      (v) => !!v || '名を入力してください',
-      (v) => /^([ァ-ン]|ー)+$/.test(v) || '全角カタカナで入力してください'
-    ],
+    nameRules: [(v) => !!v || '名前を入力してください'],
     emailRules: [
       (v) => !!v || 'メールアドレスを入力してください',
       (v) => /.+@.+\..+/.test(v) || '有効なメールアドレスを入力してください'
@@ -158,7 +126,7 @@ export default {
         try {
           await axios.post('/api/v0/applicants', {
             email: this.email,
-            name: `${this.nameSeiKanji} ${this.nameMeiKanji}`,
+            name: this.name,
             job_id: this.data.code,
             refer_code: this.referCode
           })
@@ -174,6 +142,9 @@ export default {
     },
     clickDialogButton() {
       this.dialog = false
+    },
+    backJobPosting() {
+      this.$router.go({ path: this.$router.currentRoute.path, force: true })
     }
   }
 }

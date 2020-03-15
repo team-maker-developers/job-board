@@ -5,7 +5,12 @@
       :data="records"
       :refer-code="$route.query.refer_code"
     />
-    <job-posting v-else :data="records" @apply="isApplied = true" />
+    <job-posting
+      v-else
+      :data="records"
+      :refer-code="$route.query.refer_code"
+      @apply="isApplied = true"
+    />
   </div>
 </template>
 
@@ -26,9 +31,7 @@ export default {
   },
   async asyncData({ $axios, env, params, store, error }) {
     try {
-      const data = await $axios.$get(
-        `https://jsondata.okiba.me/v1/json/1ERa7200309124631`
-      )
+      const data = await $axios.$get(`/api/jobs/${params.id}`)
       const records = data.content.pageable_content.record
       store.commit('headers/setCompanyNameState', data.company.name)
       return {

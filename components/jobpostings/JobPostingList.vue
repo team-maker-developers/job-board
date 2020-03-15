@@ -104,6 +104,11 @@ export default {
     Place
   },
   props: {
+    referCode: {
+      type: String,
+      require: false,
+      default: () => ''
+    },
     data: {
       type: Object,
       require: false,
