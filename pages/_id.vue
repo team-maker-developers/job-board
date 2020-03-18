@@ -29,9 +29,12 @@ export default {
       title: this.data.meta.title
     }
   },
-  async asyncData({ $axios, env, params, store, error }) {
+  async asyncData({ $axios, env, params, query, store, error }) {
     try {
-      const data = await $axios.$get(`/api/jobs/${params.id}`)
+      const referCode = query.refer_code
+        ? `?refer_code=${query.refer_code}`
+        : ''
+      const data = await $axios.$get(`/api/jobs/${params.id}${referCode}`)
       const records = data.content.pageable_content.record
       store.commit('headers/setCompanyNameState', data.company.name)
       return {
