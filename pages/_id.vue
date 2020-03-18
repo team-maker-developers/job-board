@@ -1,30 +1,46 @@
 <template>
-  <div><job-posting :data="records" /></div>
+  <div>
+    <apply-job
+      v-if="isApplied"
+      :data="records"
+      :refer-code="$route.query.refer_code"
+    />
+    <job-posting
+      v-else
+      :data="records"
+      :refer-code="$route.query.refer_code"
+      @apply="isApplied = true"
+    />
+  </div>
 </template>
 
 <script>
 import JobPosting from '~/components/jobpostings/JobPostingList.vue'
+import ApplyJob from '~/components/form/ApplyJob.vue'
 
 export default {
   layout: 'default',
   components: {
-    JobPosting
+    JobPosting,
+    ApplyJob
   },
   head() {
     return {
       title: this.data.meta.title
     }
   },
-  async asyncData({ $axios, env, params, store, error }) {
+  async asyncData({ $axios, env, params, query, store, error }) {
     try {
-      const data = await $axios.$get(
-        `https://jsondata.okiba.me/v1/json/1ERa7200309124631`
-      )
+      const referCode = query.refer_code
+        ? `?refer_code=${query.refer_code}`
+        : ''
+      const data = await $axios.$get(`/api/jobs/${params.id}${referCode}`)
       const records = data.content.pageable_content.record
       store.commit('headers/setCompanyNameState', data.company.name)
       return {
         data,
-        records
+        records,
+        isApplied: false
       }
     } catch (err) {
       error({

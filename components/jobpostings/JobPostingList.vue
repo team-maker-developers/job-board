@@ -77,7 +77,12 @@
       <v-card flat tile width="100%" class="blue-grey lighten-5">
         <v-card-text>
           <div class="d-flex justify-center pb-5">
-            <v-btn x-large block color="amber darken-4" dark to="form"
+            <v-btn
+              x-large
+              block
+              color="amber darken-4"
+              dark
+              @click="$emit('apply')"
               >応募する</v-btn
             >
           </div>
@@ -99,6 +104,11 @@ export default {
     Place
   },
   props: {
+    referCode: {
+      type: String,
+      require: false,
+      default: () => ''
+    },
     data: {
       type: Object,
       require: false,
