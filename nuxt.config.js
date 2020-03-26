@@ -49,16 +49,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/apollo'
   ],
-  apollo: {
-    clientConfigs: {
-      default: {
-        // TODO: エンドポイントを切り替えられるようにする
-        httpEndpoint: 'http://localhost:8888'
-      }
-    }
-  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
