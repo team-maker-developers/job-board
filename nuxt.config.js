@@ -4,7 +4,10 @@ import { getConfig } from './configs/get-config'
 const environment = process.env.NODE_ENV || 'development'
 const envValues = getConfig(environment)
 export default {
-  mode: 'universal',
+  mode: 'spa',
+  server: {
+    port: 5000
+  },
   /*
    ** Headers of the page
    */
@@ -48,7 +51,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa'
   ],
   /*
    ** Axios module configuration
