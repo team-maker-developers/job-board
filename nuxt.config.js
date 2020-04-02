@@ -3,8 +3,12 @@ import { getConfig } from './configs/get-config'
 
 const environment = process.env.NODE_ENV || 'development'
 const envValues = getConfig(environment)
+
 export default {
-  mode: 'universal',
+  mode: 'spa',
+  server: {
+    port: 5000
+  },
   /*
    ** Headers of the page
    */
@@ -25,7 +29,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#ec6d81' },
   /*
    ** Global CSS
    */
@@ -48,13 +52,15 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: envValues.apiDomain
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

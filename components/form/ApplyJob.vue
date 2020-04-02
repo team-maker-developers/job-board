@@ -47,16 +47,16 @@
                 </div>
                 <div class="d-flex justify-center pb-5">
                   <v-btn
+                    @click.stop="validate"
                     x-large
                     color="amber darken-4"
                     block
                     dark
-                    @click.stop="validate"
                     >応募する</v-btn
                   >
                 </div>
                 <v-dialog v-model="dialog" max-width="500">
-                  <v-card>
+                  <v-card :loading="loading">
                     <v-card-title class="headline">{{
                       dialogTitle
                     }}</v-card-title>
@@ -67,7 +67,7 @@
 
                     <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn color="primary" @click="clickDialogButton">
+                      <v-btn @click="clickDialogButton" color="primary">
                         OK
                       </v-btn>
                     </v-card-actions>
@@ -79,13 +79,11 @@
         </v-col>
       </v-row>
     </v-container>
-    <a @click="backJobPosting">求人情報に戻る</a>
+    <a @click="$emit('back')">求人情報に戻る</a>
   </v-layout>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   props: {
     referCode: {
@@ -113,7 +111,8 @@ export default {
       (v) => /.+@.+\..+/.test(v) || '有効なメールアドレスを入力してください'
     ],
     checkbox: false,
-    dialog: false
+    dialog: false,
+    loading: false
   }),
   mounted() {
     this.title = this.data.name
@@ -123,13 +122,18 @@ export default {
     async validate() {
       if (this.$refs.form.validate()) {
         this.dialog = true
+        this.loading = true
+        this.dialogTitle = 'データを送信中です。'
+        this.dialogText = 'お手数ですが、少々お待ち下さいませ。'
+
         try {
-          await axios.post('/api/v0/applicants', {
+          await this.$axios.post('/api/v0/applicants', {
             email: this.email,
             name: this.name,
-            job_id: this.data.code,
+            job_id: this.data.id,
             refer_code: this.referCode
           })
+
           this.dialogTitle = '求人に応募しました'
           this.dialogText =
             '3営業日中に返信いたします。\n 誠に恐縮ですが、少々お待ち下さい。'
@@ -137,14 +141,13 @@ export default {
           this.dialogTitle = 'エラーが発生しました。'
           this.dialogText =
             '応募できませんでした。\n 誠に恐縮ですが、再度お試しください。'
+        } finally {
+          this.loading = false
         }
       }
     },
     clickDialogButton() {
       this.dialog = false
-    },
-    backJobPosting() {
-      this.$router.go({ path: this.$router.currentRoute.path, force: true })
     }
   }
 }

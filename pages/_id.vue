@@ -4,6 +4,7 @@
       v-if="isApplied"
       :data="records"
       :refer-code="$route.query.refer_code"
+      @back="isApplied = false"
     />
     <job-posting
       v-else
@@ -15,7 +16,7 @@
 </template>
 
 <script>
-import JobPosting from '~/components/jobpostings/JobPostingList.vue'
+import JobPosting from '~/components/job-postings/JobPostingList.vue'
 import ApplyJob from '~/components/form/ApplyJob.vue'
 
 export default {
@@ -25,27 +26,30 @@ export default {
     ApplyJob
   },
   head() {
-    return {
-      title: this.data.meta.title
+    const meta = { ...this.data.meta }
+    if (!('title' in meta)) {
+      meta.title = this.records.name
     }
+
+    return meta
   },
-  async asyncData({ $axios, env, params, query, store, error }) {
+  async asyncData({ $axios, params, query, store, error }) {
+    const referCode = query.refer_code ? `?refer_code=${query.refer_code}` : ''
+
     try {
-      const referCode = query.refer_code
-        ? `?refer_code=${query.refer_code}`
-        : ''
-      const data = await $axios.$get(`/api/jobs/${params.id}${referCode}`)
+      const data = await $axios.$get(`/api/v0/pages/${params.id}${referCode}`)
       const records = data.content.pageable_content.record
       store.commit('headers/setCompanyNameState', data.company.name)
+
       return {
         data,
         records,
         isApplied: false
       }
-    } catch (err) {
+    } catch (apiError) {
       error({
-        statusCode: err.response.status,
-        message: err.response.data.message
+        statusCode: apiError.response.status,
+        message: apiError.response.data.message
       })
     }
   }
