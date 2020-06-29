@@ -7,6 +7,9 @@
       "hosting": {
         "job": [
           "teammaker-job"
+        ],
+        "stage-job": [
+          "stage-teammaker-job"
         ]
       }
     }
