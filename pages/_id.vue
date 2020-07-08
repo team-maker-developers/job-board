@@ -27,11 +27,32 @@ export default {
   },
   head() {
     const meta = { ...this.data.meta }
-    if (!('title' in meta)) {
-      meta.title = this.records.name
-    }
 
-    return meta
+    return {
+      title: meta.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: meta.description
+        },
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: meta.ogType
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: meta.ogTitle
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: meta.ogDescription
+        }
+      ]
+    }
   },
   async asyncData({ $axios, params, query, store, error }) {
     const referCode = query.refer_code ? `?refer_code=${query.refer_code}` : ''
