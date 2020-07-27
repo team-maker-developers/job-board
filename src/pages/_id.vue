@@ -29,8 +29,6 @@ export default {
   },
   head() {
     const meta = { ...this.data.meta }
-    console.log(functions)
-    console.log(functions.config().envvalues.baseUrl)
 
     return {
       title: meta.title,
