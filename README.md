@@ -15,7 +15,7 @@ $ yarn install
 $ yarn build
 $ cd ../
 
-# functions/ の準備
+# functions/ の準備(一時的にnodeを10.xにする必要があります)
 $ cd functions/
 $ yarn install
 $ cd ../
