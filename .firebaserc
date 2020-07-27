@@ -1,14 +1,5 @@
 {
   "projects": {
-    "default": "teammaker-270808"
-  },
-  "targets": {
-    "teammaker-270808": {
-      "hosting": {
-        "job": [
-          "teammaker-job"
-        ]
-      }
-    }
+    "default": "team-maker-test"
   }
 }

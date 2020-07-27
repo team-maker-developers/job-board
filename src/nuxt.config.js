@@ -5,7 +5,7 @@ const environment = process.env.NODE_ENV || 'development'
 const envValues = getConfig(environment)
 
 export default {
-  mode: 'spa',
+  mode: 'universal',
   server: {
     port: 5000
   },
@@ -93,10 +93,20 @@ export default {
   /*
    ** Build configuration
    */
+  buildDir: '../functions/nuxt',
   build: {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    publicPath: '/',
+    extend(config, ctx) {
+      config.node = {
+        fs: 'empty',
+        child_process: 'empty',
+        net: 'empty',
+        dns: 'empty',
+        tls: 'empty'
+      }
+    }
   }
 }

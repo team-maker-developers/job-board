@@ -19,6 +19,8 @@
 import JobPosting from '~/components/job-postings/JobPostingList.vue'
 import ApplyJob from '~/components/form/ApplyJob.vue'
 
+const functions = require('firebase-functions')
+
 export default {
   layout: 'default',
   components: {
@@ -27,6 +29,8 @@ export default {
   },
   head() {
     const meta = { ...this.data.meta }
+    console.log(functions)
+    console.log(functions.config().envvalues.baseUrl)
 
     return {
       title: meta.title,
@@ -50,6 +54,11 @@ export default {
           hid: 'og:description',
           property: 'og:description',
           content: meta.ogDescription
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `${functions.config().envvalues.baseUrl}/${this.$route.params.id}`
         }
       ]
     }

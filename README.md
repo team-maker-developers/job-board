@@ -2,28 +2,25 @@
 
 team-maker求人票のフロントエンド
 
-## デプロイ（モック）
-### ステータス
-- [![Netlify Status](https://api.netlify.com/api/v1/badges/d8521463-015e-4741-87e4-8089404d3f1c/deploy-status)](https://app.netlify.com/sites/brave-golick-7ab823/deploys)
-
-### URL
-- https://brave-golick-7ab823.netlify.com/
-
-## ビルド手順
+## firebaseへのデプロイ手順
 
 ``` bash
-# install dependencies
+# 環境変数の設定
+# コマンド実行前に、firebase-config.jsonのbaseUrlを書き換えておく
+$ firebase functions:config:set envvalues="$(cat firebase-config.json)"
+
+# src/ の準備
+$ cd src/
+$ yarn install
+$ yarn build
+
+# functions/ の準備
+$ cd functions/
 $ yarn install
 
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
+# デプロイ手順
+$ cp -r functions/nuxt/dist/client/* public/ && cp -r src/static/* public/
+$ firebase deploy
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
