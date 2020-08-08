@@ -68,11 +68,11 @@
                 </div>
                 <div class="d-flex justify-center pb-5">
                   <v-btn
+                    @click.stop="validate"
                     x-large
                     color="amber darken-4"
                     block
                     dark
-                    @click.stop="validate"
                     >応募する</v-btn
                   >
                 </div>
@@ -89,7 +89,7 @@
 
                     <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn color="primary" @click="dialog = false">
+                      <v-btn @click="dialog = false" color="primary">
                         OK
                       </v-btn>
                     </v-card-actions>
