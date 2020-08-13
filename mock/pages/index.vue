@@ -1,14 +1,14 @@
 <template>
-  <v-container fluid>
-    <v-row justify="center">
-      <v-card outlined tile max-width="500px">
-        <v-row justify="center">
-          <v-card-title class="headline font-weight-bold">
-            社会福祉法人 足立邦栄会
-          </v-card-title>
-        </v-row>
-        <v-divider class="primary"></v-divider>
-        <div class="mx-5">
+  <v-container fluid class="pb-0 px-0">
+    <v-card flat tile>
+      <v-row justify="center">
+        <v-card-title class="headline font-weight-bold">
+          社会福祉法人 足立邦栄会
+        </v-card-title>
+      </v-row>
+      <v-divider class="primary"></v-divider>
+      <v-row justify="center">
+        <v-col class="mx-5" style="max-width: 700px;">
           <v-row class="mt-5">
             <v-img src="kanekosan-1.svg" width="200px" class="ma-5"></v-img>
           </v-row>
@@ -166,27 +166,29 @@
               送信
             </v-btn>
           </v-row>
-        </div>
-        <v-footer dark class="mt-12">
-          <v-row justify="center">
-            <v-card-title class="mt-5 pa-3">
-              <p class="font-weight-bold mb-0">
-                社会福祉法人&emsp;足立邦栄会
-              </p>
-            </v-card-title>
-          </v-row>
-          <v-row>
-            <v-card-text>
-              <p>〒123-0862<br />東京都足立区皿沼2-8-8</p>
-              <p>
-                電話番号：03-5691-7150<br />
-                メールアドレス：recruit@sakura.houeikai.gr.jp
-              </p>
-            </v-card-text>
-          </v-row>
-        </v-footer>
-      </v-card>
-    </v-row>
+        </v-col>
+      </v-row>
+      <v-footer dark class="mt-12">
+        <v-row justify="center">
+          <v-col style="max-width: 400px">
+            <v-row justify="center">
+              <v-card-title d-block>
+                <p class="font-weight-bold mb-0">
+                  社会福祉法人&emsp;足立邦栄会
+                </p>
+              </v-card-title>
+              <v-card-text>
+                <p>〒123-0862<br />東京都足立区皿沼2-8-8</p>
+                <p>
+                  電話番号：03-5691-7150<br />
+                  メールアドレス：recruit@sakura.houeikai.gr.jp
+                </p>
+              </v-card-text>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-footer>
+    </v-card>
   </v-container>
 </template>
 
