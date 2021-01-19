@@ -1,8 +1,8 @@
 <template>
   <v-app dark>
-    <v-app-bar app>
-      <v-toolbar-title>
-        <p class="pa-0 ma-0 caption">{{ companyName }}</p>
+    <v-app-bar flat id="app-header">
+      <v-toolbar-title class="mx-auto">
+        <p class="title text-h3 text-center my-0">{{ companyName }}</p>
       </v-toolbar-title>
     </v-app-bar>
     <v-content>
@@ -22,3 +22,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+#app-header {
+  background-color: #fff;
+  border-bottom: 1px #f8226a solid;
+}
+</style>
