@@ -21,8 +21,8 @@ import ApplyJob from '~/components/form/ApplyJob.vue'
 
 export default {
   components: {
-    JobPosting,
-    ApplyJob
+    ApplyJob,
+    JobPosting
   },
   layout: 'default',
   async asyncData({ $axios, params, query, store, error }) {

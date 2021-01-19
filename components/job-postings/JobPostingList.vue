@@ -48,23 +48,6 @@
         </v-col>
       </v-row>
     </v-container>
-
-    <v-footer fixed padless>
-      <v-card flat tile height="5.5em" width="100%" class="blue-grey lighten-5">
-        <v-card-text>
-          <div class="d-flex justify-center pb-5">
-            <v-btn
-              x-large
-              block
-              color="amber darken-4"
-              dark
-              @click="$emit('apply')"
-              >応募する</v-btn
-            >
-          </div>
-        </v-card-text>
-      </v-card>
-    </v-footer>
   </v-layout>
 </template>
 
