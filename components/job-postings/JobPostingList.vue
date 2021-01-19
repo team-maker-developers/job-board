@@ -28,9 +28,7 @@
             <work-place :place="data.place" />
             <work-date-time :work-datetime="data.work_datetime" />
             <v-card v-if="salary" flat outlined>
-              <v-card-title class="blue-grey lighten-5">
-                給与
-              </v-card-title>
+              <v-card-title class="blue-grey lighten-5">給与</v-card-title>
               <v-card-text>
                 <p class="my-2">{{ salary }}</p>
               </v-card-text>
@@ -51,16 +49,16 @@
       </v-row>
     </v-container>
 
-    <v-footer :fixed="true" :padless="true">
+    <v-footer fixed padless>
       <v-card flat tile height="5.5em" width="100%" class="blue-grey lighten-5">
         <v-card-text>
           <div class="d-flex justify-center pb-5">
             <v-btn
-              @click="$emit('apply')"
               x-large
               block
               color="amber darken-4"
               dark
+              @click="$emit('apply')"
               >応募する</v-btn
             >
           </div>

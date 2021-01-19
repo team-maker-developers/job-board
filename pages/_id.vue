@@ -20,19 +20,11 @@ import JobPosting from '~/components/job-postings/JobPostingList.vue'
 import ApplyJob from '~/components/form/ApplyJob.vue'
 
 export default {
-  layout: 'default',
   components: {
     JobPosting,
     ApplyJob
   },
-  head() {
-    const meta = { ...this.data.meta }
-    if (!('title' in meta)) {
-      meta.title = this.records.name
-    }
-
-    return meta
-  },
+  layout: 'default',
   async asyncData({ $axios, params, query, store, error }) {
     const referCode = query.refer_code ? `?refer_code=${query.refer_code}` : ''
 
@@ -52,6 +44,14 @@ export default {
         message: apiError.response.data.message
       })
     }
+  },
+  head() {
+    const meta = { ...this.data.meta }
+    if (!('title' in meta)) {
+      meta.title = this.records.name
+    }
+
+    return meta
   }
 }
 </script>

@@ -5,7 +5,7 @@ const environment = process.env.NODE_ENV || 'development'
 const envValues = getConfig(environment)
 
 export default {
-  mode: 'spa',
+  ssr: false,
   server: {
     port: 5000
   },
