@@ -31,7 +31,7 @@ export default {
     try {
       const data = await $axios.$get(`/api/v0/pages/${params.id}${referCode}`)
       const records = data.content.pageable_content.record
-      store.commit('headers/setCompanyNameState', data.company.name)
+      store.commit('company/setCompany', data.company)
 
       return {
         data,

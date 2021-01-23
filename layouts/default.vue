@@ -25,7 +25,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters({ companyName: 'headers/getCompanyName' })
+    ...mapGetters({ companyName: 'company/getCompanyName' })
   }
 }
 </script>
