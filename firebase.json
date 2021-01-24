@@ -1,17 +1,34 @@
 {
-  "hosting": {
-    "target": "job",
-    "public": "dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/200.html"
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "target": "job",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/200.html"
+        }
+      ]
+    },
+    {
+      "target": "stage-job",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/200.html"
+        }
+      ]
+    }
+  ]
 }
