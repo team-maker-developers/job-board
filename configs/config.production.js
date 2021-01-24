@@ -1,3 +1,3 @@
 export const envValues = {
-  apiDomain: 'http://localhost:8888'
+  apiDomain: 'https://backend.teammaker.info'
 }
