@@ -1,20 +1,8 @@
 <template>
   <v-app dark>
-    <v-app-bar id="app-header" flat>
-      <v-toolbar-title class="mx-auto">
-        <p class="title text-h3 text-center my-0">{{ companyName }}</p>
-      </v-toolbar-title>
-    </v-app-bar>
-    <v-main>
+    <v-content>
       <nuxt />
-    </v-main>
-    <v-footer id="app-footer">
-      <v-row>
-        <v-col class="mt-4 text-center">
-          <p class="text-h5">{{ companyName }}</p>
-        </v-col>
-      </v-row>
-    </v-footer>
+    </v-content>
   </v-app>
 </template>
 

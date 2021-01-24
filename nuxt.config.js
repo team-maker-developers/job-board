@@ -70,6 +70,9 @@ export default {
     theme: {
       dark: false,
       themes: {
+        light: {
+          primary: colors.pink
+        },
         dark: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
@@ -86,7 +89,8 @@ export default {
   env: envValues,
 
   dir: {
-    pages: envValues.isMock ? 'mock' : 'pages'
+    pages: envValues.isMock ? 'mock/pages' : 'pages',
+    static: envValues.isMock ? 'mock/static' : 'static'
   },
   /*
    ** Build configuration
