@@ -5,11 +5,9 @@
         <p class="title text-h3 text-center my-0">{{ companyName }}</p>
       </v-toolbar-title>
     </v-app-bar>
-    <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-content>
+    <v-main>
+      <nuxt />
+    </v-main>
     <v-footer id="app-footer">
       <v-row>
         <v-col class="mt-4 text-center">
@@ -32,15 +30,15 @@ export default {
 
 <style lang="scss" scoped>
 #app-header {
-  background-color: #fff;
-  border-bottom: 1px #f8226a solid;
+  background-color: $main-color;
+  border-bottom: 1px $sub-color solid;
 }
 
 #app-footer {
-  background-color: #373941;
+  background-color: $footer-color;
 
   p {
-    color: #fff;
+    color: $main-color;
   }
 }
 </style>
