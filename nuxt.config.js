@@ -5,7 +5,7 @@ const environment = process.env.NODE_ENV || 'development'
 const envValues = getConfig(environment)
 
 export default {
-  mode: 'spa',
+  ssr: false,
   server: {
     port: 5000
   },
@@ -13,7 +13,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
+    titleTemplate: '%s',
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
