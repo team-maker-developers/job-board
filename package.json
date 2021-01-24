@@ -7,10 +7,14 @@
   "scripts": {
     "dev": "nuxt",
     "stage": "cross-env NODE_ENV=\"staging\" nuxt",
+    "prod": "cross-env NODE_ENV=\"production\" nuxt",
     "build": "nuxt build",
     "build:stage": "cross-env NODE_ENV=\"staging\" nuxt build",
+    "build:prod": "cross-env NODE_ENV=\"production\" nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "deploy:stage": "yarn build:stage && firebase deploy --only hosting:stage-job",
+    "deploy:prod": "yarn build:prod && firebase deploy --only hosting:job",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
     "test": "jest"
