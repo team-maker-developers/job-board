@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="post-content-wrapper">
     <v-row>
       <v-col cols="12">
         <v-img v-if="headerImageUrl" :src="headerImageUrl" />
@@ -8,7 +8,8 @@
 
     <v-row>
       <v-col cols="12">
-        <div v-html="contentBody" />
+        <!-- eslint-disable-next-line vue/no-v-html !-->
+        <div id="post-content" v-html="contentBody" />
       </v-col>
     </v-row>
   </v-container>
@@ -29,3 +30,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.post-content-wrapper {
+  .v-image {
+    margin-top: 40px;
+    border-radius: 4px;
+  }
+}
+</style>

@@ -1,8 +1,8 @@
 <template>
   <v-app dark>
-    <v-app-bar id="app-header" flat>
+    <v-app-bar id="app-header" flat height="74px">
       <v-toolbar-title class="mx-auto">
-        <p class="title text-h3 text-center my-0">{{ companyName }}</p>
+        <p class="title text-h3 text-center my-3">{{ companyName }}</p>
       </v-toolbar-title>
     </v-app-bar>
     <v-content>
